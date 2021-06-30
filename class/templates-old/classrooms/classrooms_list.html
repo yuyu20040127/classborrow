@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-1">
+  <a href="{% url 'classrooms_add' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-plus"></i> 新增教室
+  </a>
+</div>
+<div id="classrooms-list" class="card-group">
+  {% for classromoms in classrooms_list %}
+  <div class="card shadow-sm">
+    <a href="{% url 'classrooms_view' classrooms.id %}">
+      <img src="{{ classrooms.preface.url }}" alt="{{ classrooms.title }}" class="card-img">
+    </a>
+    <div class="card-body">
+      <div class="card-title">
+        <a href="{% url 'classrooms_view' classrooms.id %}">{{ classrooms.title }}</a>
+      </div>
+      <div class="card-text">{{ classrooms.period }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

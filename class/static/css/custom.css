@@ -1,0 +1,16 @@
+#classrooms-list .card-body {
+    padding: 5pt;
+    font-size: 11pt;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+#classrooms-list .card {
+    flex: 0 0 20%;
+}
+
+#classrooms-detail img {
+    box-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.3);
+    width: 100%;
+}

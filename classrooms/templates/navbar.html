@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-info mb-2">
+  <div class="navbar-brand">教室借用系統</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'classrooms_list' %}" class="nav-link">
+            <i class="fas fa-classrooms"></i> 教室列表
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'borrower_list' %}" class="nav-link">
+            <i class="fas fa-classrooms-borrower"></i> 借用者列表
+          </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'log_list' %}" class="nav-link">
+          <i class="fas fa-list"></i> 借閱紀錄
+        </a>
+      </li>
+        {% if perms.auth.view_user %}
+          <li class="nav-item">
+            <a href="{% url 'staff_list' %}" class="nav-link">
+              <i class="fas fa-users"></i> 行政人員
+            </a>
+          </li>
+        {% endif %}
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i> 登出 {{ user.username }}
+          </a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a href="{% url 'login' %}" class="nav-link">
+            <i class="fas fa-sign-in-alt"></i>登入
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

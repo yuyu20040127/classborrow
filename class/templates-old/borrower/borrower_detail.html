@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="borrower-detail">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          {{ borrower.realname }}
+        </div>
+        <table class="table table-sm">
+          <tr>
+            <th>電話</th>
+            <td>{{ borrower.tel }}</td>
+          </tr>
+          <tr>
+            <th>電子信箱</th>
+            <td>{{ borrower.email }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-1">
+  <a href="{% url 'checkout_borrower' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-address-classrooms"></i> 借用教室
+  </a>
+  <a href="{% url 'return_classrooms' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-undo"></i> 歸還教室
+  </a>
+</div>
+<div id="log-list">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>借用時間</th>
+        <th>教室</th>
+        <th>借用人</th>
+        <th>歸還時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in log_list %}
+      <tr>
+        <td>{{ log.checkout|date:"Y/m/d H:i" }}</td>
+        <td>
+          <a href="{% url 'classrooms_view' log.Classrooms.id %}">
+            {{ log.classrooms.title }}
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'borrower_view' log.borrower.id %}">
+            {{ log.borrower.realname }}
+          </a>
+        </td>
+        <td>{{ log.returned|date:"Y/m/d H:i" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
